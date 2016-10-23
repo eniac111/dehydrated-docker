@@ -9,6 +9,7 @@ VOLUME ["/var/www/localhost/htdocs", "/var/dehydrated"]
 
 COPY ./config /etc/dehydrated/config
 COPY ./cron /etc/periodic/daily
+COPY ./entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/sbin/tini", "--", "lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]
+ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 
